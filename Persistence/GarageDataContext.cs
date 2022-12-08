@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class DataContext : DbContext
+    public class GarageDataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        public GarageDataContext(DbContextOptions<GarageDataContext> options) : base(options)
         {
         }
-        public DbSet<Activity> Activities { get; set; }
+        public DbSet<GarageUser> GarageUsers { get; set; }
         
     }
 }

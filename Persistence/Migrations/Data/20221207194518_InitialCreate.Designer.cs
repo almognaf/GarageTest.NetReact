@@ -8,10 +8,10 @@ using Persistence;
 
 #nullable disable
 
-namespace Persistence.Migrations
+namespace Persistence.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221130155419_InitialCreate")]
+    [Migration("20221207194518_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -9,41 +10,52 @@ using Persistence;
 
 namespace Persistence.Migrations
 {
-    [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(GarageDataContext))]
+    [Migration("20221207194437_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
-            modelBuilder.Entity("Domain.Activity", b =>
+            modelBuilder.Entity("Domain.GarageUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Admin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CarNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CarRecieved")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Catagory")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("City")
+                    b.Property<string>("ClientAgent")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<string>("ClientInsurance")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Title")
+                    b.Property<DateTime>("LastLoginDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Venue")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Activities");
+                    b.ToTable("GarageUsers");
                 });
 #pragma warning restore 612, 618
         }

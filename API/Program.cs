@@ -29,9 +29,20 @@ namespace API
           catch(Exception ex)
           {
             var logger = services.GetRequiredService<ILogger<Program>>();
-            logger.LogError(ex, "An error occure during the migration");
+            logger.LogError(ex, "An error occure during the Activity migration");
           }
-          await host.RunAsync();
+          try
+          {
+            var garageContext = services.GetRequiredService<GarageDataContext>();
+            await garageContext.Database.MigrateAsync();
+            await GarageDataSeed.SeedData(garageContext);
+          }
+          catch(Exception ex)
+          {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occure during the Garage migration");
+          }
+           await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

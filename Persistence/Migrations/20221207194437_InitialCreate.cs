@@ -12,20 +12,23 @@ namespace Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Activities",
+                name: "GarageUsers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Title = table.Column<string>(type: "TEXT", nullable: true),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastLoginDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CarRecieved = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    CarNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     Catagory = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    Venue = table.Column<string>(type: "TEXT", nullable: true)
+                    ClientInsurance = table.Column<string>(type: "TEXT", nullable: true),
+                    ClientAgent = table.Column<string>(type: "TEXT", nullable: true),
+                    Admin = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Activities", x => x.Id);
+                    table.PrimaryKey("PK_GarageUsers", x => x.Id);
                 });
         }
 
@@ -33,7 +36,7 @@ namespace Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Activities");
+                name: "GarageUsers");
         }
     }
 }
